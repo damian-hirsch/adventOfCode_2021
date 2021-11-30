@@ -2,7 +2,7 @@ import numpy as np
 
 
 def get_input():
-    with open('Input/Day9.txt', 'r') as file:
+    with open('Input/Day05.txt', 'r') as file:
         data = file.read().splitlines()
     return data
 
