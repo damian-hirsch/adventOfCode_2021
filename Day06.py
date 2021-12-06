@@ -1,25 +1,44 @@
 import numpy as np
 
 
-def get_input():
+def get_input() -> np.ndarray:
+    # Split lines and write each line to list
     with open('Input/Day06.txt', 'r') as file:
         data = file.read().splitlines()
-    return data
+        # Split the numbers and map to a list as integers
+        data = list(map(int, data[0].split(',')))
+    # Convert the list to an np array
+    return np.asarray(data)
 
 
-def part_one(data: list, rounds: int) -> int:
+# The problem is computationally critical, that's why we don't keep track of every fish, but only how many we have in
+# each group
+def part_one_and_two(data: np.ndarray, days: int) -> np.ndarray:
+    # Array to track the fish count in each group
+    fish_count = np.zeros(9, dtype='int64')
+    # Fill this array with the initial count
+    for i in range(len(fish_count)):
+        fish_count[i] = np.count_nonzero(data == i)
 
-    return xy
+    # Start growing the fish
+    for d in range(days):
+        # Keep track of how many parent fish = how many fish go back to 6 days = how many new fish
+        parent_fish = fish_count[0]
+        # Shift the fish count array one day forward (this is a very inexpensive operation compared to tracking the
+        # fish)
+        fish_count = np.roll(fish_count, -1)
+        # Add the parent fish back to the fish that are now also add day 6 (former baby fish coming from day 7)
+        fish_count[6] += parent_fish
+        # Add the new fish to the end of the array --> not needed because the roll takes care of it parent_fish =
+        # new_fish
+        # fish_count[8] = new_fish
 
-
-def part_two(data: list, rounds: int) -> np.int64:
-
-    return xy
+    return np.sum(fish_count)
 
 
 def main():
-    print('xy', part_one(get_input(), 100))
-    print('xy', part_two(get_input(), 10000000))
+    print('Lantern fish after 80 days:', part_one_and_two(get_input(), 80))
+    print('Lantern fish after 256 days:', part_one_and_two(get_input(), 256))
 
 
 if __name__ == '__main__':
