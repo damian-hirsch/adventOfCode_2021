@@ -25,9 +25,9 @@ def part_one_and_two(data: np.ndarray, days: int) -> np.ndarray:
         # Keep track of how many parent fish = how many fish go back to 6 days = how many new fish
         parent_fish = fish_count[0]
         # Shift the fish count array one day forward (this is a very inexpensive operation compared to tracking the
-        # fish)
+        # fish, appending to a list every time, etc.)
         fish_count = np.roll(fish_count, -1)
-        # Add the parent fish back to the fish that are now also add day 6 (former baby fish coming from day 7)
+        # Add the parent fish back to the fish that are now also at day 7 (former baby fish coming from day 8)
         fish_count[6] += parent_fish
         # Add the new fish to the end of the array --> not needed because the roll takes care of it parent_fish =
         # new_fish
