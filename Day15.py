@@ -15,6 +15,7 @@ def get_input():
 
 
 # The problem can be solved using the Dijkstra algorithm
+# This implementation is based on https://levelup.gitconnected.com/dijkstra-algorithm-in-python-8f0e75e3f16e
 def dijkstra(cost_map, starting_node):
     # Create a set “visited” to keep track of visited nodes
     visited = set()
