@@ -1,25 +1,6 @@
-import numpy as np
-
-
-def get_input():
-    with open('Input/Day23.txt', 'r') as file:
-        data = file.read().splitlines()
-    return data
-
-
-def part_one(data: list, rounds: int) -> int:
-
-    return xy
-
-
-def part_two(data: list, rounds: int) -> np.int64:
-
-    return xy
-
-
 def main():
-    print('xy', part_one(get_input(), 100))
-    print('xy', part_two(get_input(), 10000000))
+    print('Both problems can be solved by hand faster than the time it takes to create the program. However, a proper'
+          'program will be added soon.')
 
 
 if __name__ == '__main__':
